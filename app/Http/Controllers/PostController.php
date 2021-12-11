@@ -9,6 +9,12 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+       // $this->middleware('auth')-> only('index', 'show');
+       // $this->middleware('auth')-> except('create', 'store','edit','update', 'destroy');
+       $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +25,9 @@ class PostController extends Controller
         $posts = Post::orderBy('id','ASC') ->paginate(10);
         return view('dashboard.posts.index',['posts' => $posts]);
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.

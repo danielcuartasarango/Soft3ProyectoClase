@@ -19,6 +19,12 @@ class CategoryController extends Controller
         return view('dashboard.categories.index', ['categories' => $categories]);
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
